@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kassenova | Оптовый отдел</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Manrope"', 'sans-serif'] },
+                    colors: { brand: { gold: '#d4af37', rose: '#fce7f3', dark: '#1a1a1a', light: '#fafafa' } },
+                    animation: { 'blob': 'blob 10s infinite' },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .text-gradient { background: linear-gradient(to right, #d4af37, #b46b57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="font-sans bg-brand-light text-brand-dark overflow-x-hidden selection:bg-brand-gold selection:text-white">
+
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[100px] opacity-50 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-50 animate-blob animation-delay-2000"></div>
+    </div>
+
+    <header class="fixed w-full z-50 glass transition-all duration-300 top-0">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative z-50">
+            <a href="index.html" class="font-serif text-2xl font-bold tracking-widest text-gradient">KASSENOVA</a>
+            <a href="index.html" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-brand-gold transition">
+                <i class="fas fa-arrow-left"></i> Вернуться в магазин
+            </a>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 text-center relative z-10">
+        <div class="container mx-auto px-6">
+            <span class="text-brand-gold font-bold tracking-[0.2em] text-xs uppercase bg-white px-4 py-1 rounded-full shadow-sm">B2B Partnership</span>
+            <h1 class="font-serif text-4xl md:text-6xl font-bold mt-4 mb-4">Оптовый Прайс</h1>
+            <p class="text-gray-500 max-w-xl mx-auto">Специальные условия для партнеров. Минимальный заказ от 5 единиц.</p>
+        </div>
+    </section>
+
+    <section class="pb-24 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400">
+                            <i class="fas fa-box-open text-3xl mb-2"></i>
+                            <p class="text-[10px] uppercase">Фото товара 1</p>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №1 (Название)</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 2</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №2</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 10 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 3</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №3</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 4</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №4</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 5</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №5</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 6</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №6</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 7</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №7</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 8</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №8</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 9</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №9</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-full aspect-square bg-gray-200 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото товара 10</p></div>
+                    </div>
+                    <h3 class="font-bold text-sm mb-1">Товар №10</h3>
+                    <p class="text-xs text-gray-500 mb-3">Мин. заказ: 5 шт.</p>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-lg text-brand-dark">XXXX ₸</span>
+                        <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-white py-8 border-t border-white/10 text-center text-xs">
+        <p>&copy; 2026 Kassenova Wholesale.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>
