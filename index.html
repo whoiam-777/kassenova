@@ -24,13 +24,13 @@
                     colors: {
                         brand: {
                             gold: '#d4af37',
-                            rose: '#eec0c6',
+                            rose: '#fce7f3',
                             dark: '#1a1a1a',
-                            light: '#f9f9f9'
+                            light: '#fafafa'
                         }
                     },
                     animation: {
-                        'blob': 'blob 7s infinite',
+                        'blob': 'blob 10s infinite',
                         'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
@@ -51,27 +51,27 @@
     </script>
 
     <style>
-        /* Скроллбар */
+        /* Кастомный скроллбар */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-track { background: #fff; }
         ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
         
-        /* Эффект стекла */
+        /* Эффект матового стекла */
         .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        /* Градиентный текст */
+        /* Золотой градиент для текста */
         .text-gradient {
             background: linear-gradient(to right, #d4af37, #b46b57);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Прелоадер */
+        /* Прелоадер (экран загрузки) */
         #preloader {
             position: fixed;
             inset: 0;
@@ -89,29 +89,28 @@
     <div id="preloader">
         <div class="text-center animate-pulse">
             <h1 class="font-serif text-4xl text-brand-gold tracking-widest">KASSENOVA</h1>
-            <p class="text-xs uppercase tracking-[0.3em] mt-2">Home Collection</p>
+            <p class="text-[10px] uppercase tracking-[0.4em] mt-3 text-gray-400">Premium Collection</p>
         </div>
     </div>
 
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-brand-rose/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-20 w-96 h-96 bg-brand-gold/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-rose rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-20 w-[600px] h-[600px] bg-brand-gold/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-4000"></div>
     </div>
 
     <header class="fixed w-full z-50 glass transition-all duration-300 top-0">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="font-serif text-2xl font-bold tracking-widest text-gradient">KASSENOVA</a>
             
-            <nav class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider">
+            <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#home" class="hover:text-brand-gold transition">Главная</a>
-                <a href="#products" class="hover:text-brand-gold transition">Коллекция</a>
-                <a href="#about" class="hover:text-brand-gold transition">О бренде</a>
-                <a href="#contacts" class="hover:text-brand-gold transition">Контакты</a>
+                <a href="#products" class="hover:text-brand-gold transition">Каталог</a>
+                <a href="#about" class="hover:text-brand-gold transition">О нас</a>
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="https://wa.me/77000000000" class="hidden md:flex items-center gap-2 bg-black text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-brand-gold transition shadow-lg">
+                <a href="https://wa.me/77000000000" class="hidden md:flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-brand-gold transition shadow-lg hover:shadow-brand-gold/50">
                     <i class="fab fa-whatsapp text-lg"></i> Связаться
                 </a>
                 <button class="md:hidden text-2xl text-brand-dark"><i class="fas fa-bars"></i></button>
@@ -122,41 +121,41 @@
     <section id="home" class="relative min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div data-aos="fade-right" data-aos-duration="1000">
-                <div class="inline-block px-3 py-1 bg-white border border-brand-gold/30 rounded-full text-[10px] font-bold tracking-[0.2em] mb-6 uppercase text-brand-gold">
+                <div class="inline-block px-4 py-1 bg-white/80 border border-brand-gold/30 rounded-full text-[10px] font-bold tracking-[0.2em] mb-6 uppercase text-brand-gold backdrop-blur-sm shadow-sm">
                     New Collection 2025
                 </div>
-                <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-6">
+                <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-6 text-brand-dark">
                     Искусство <br>
-                    <span class="text-gradient italic">Готовить Вкусно</span>
+                    <span class="text-gradient italic font-light">Вкусной Жизни</span>
                 </h1>
-                <p class="text-gray-500 text-lg mb-8 max-w-md leading-relaxed">
-                    Премиальная техника для вашей кухни. Аэрогрили и вафельницы нового поколения, которые превратят готовку в удовольствие.
+                <p class="text-gray-500 text-lg mb-8 max-w-md leading-relaxed font-light">
+                    Премиальная техника для вашей кухни. Аэрогрили и вафельницы, которые вдохновляют на кулинарные шедевры.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#products" class="px-8 py-4 bg-brand-dark text-white rounded-lg font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition text-center">
-                        Смотреть каталог
+                    <a href="#products" class="px-8 py-4 bg-brand-dark text-white rounded-xl font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition text-center flex items-center justify-center gap-3">
+                        Смотреть каталог <i class="fas fa-arrow-right text-xs"></i>
                     </a>
-                    <a href="https://t.me/aselya123450" class="px-8 py-4 glass text-brand-dark border border-brand-dark/10 rounded-lg font-bold hover:bg-white transition text-center flex items-center justify-center gap-2">
-                        <i class="fab fa-telegram"></i> Telegram
+                    <a href="https://t.me/aselya123450" target="_blank" class="px-8 py-4 glass text-brand-dark border border-brand-dark/5 rounded-xl font-bold hover:bg-white transition text-center flex items-center justify-center gap-2">
+                        <i class="fab fa-telegram text-[#0088cc]"></i> Telegram
                     </a>
                 </div>
             </div>
             
             <div class="relative hidden md:flex justify-center" data-aos="fade-left" data-aos-duration="1200">
-                <div class="relative w-[400px] h-[500px] border-2 border-brand-gold/20 rounded-t-full p-4 animate-float">
-                    <div class="w-full h-full bg-gradient-to-b from-gray-100 to-white rounded-t-full overflow-hidden flex items-center justify-center relative shadow-2xl">
-                        <div class="text-center p-6">
-                            <i class="fas fa-star text-brand-gold text-4xl mb-4"></i>
-                            <h3 class="font-serif text-2xl">Premium<br>Quality</h3>
-                        </div>
+                <div class="relative w-[400px] h-[500px] border border-white/50 rounded-[40px] p-2 glass animate-float shadow-2xl">
+                    <div class="w-full h-full bg-gradient-to-br from-gray-50 to-white rounded-[32px] overflow-hidden flex flex-col items-center justify-center relative">
+                        <i class="fas fa-crown text-brand-gold text-5xl mb-4 opacity-50"></i>
+                        <h3 class="font-serif text-3xl text-center">Premium<br>Quality</h3>
+                        <div class="mt-4 w-12 h-1 bg-brand-gold rounded-full"></div>
                     </div>
-                    <div class="absolute -bottom-6 -left-10 glass p-4 rounded-xl shadow-lg flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                            <i class="fas fa-check"></i>
+                    
+                    <div class="absolute -bottom-8 -left-8 glass p-5 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <div>
-                            <div class="text-xs text-gray-400">Гарантия</div>
-                            <div class="font-bold text-sm">12 месяцев</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-wider">Гарантия</div>
+                            <div class="font-bold text-brand-dark">12 месяцев</div>
                         </div>
                     </div>
                 </div>
@@ -164,103 +163,115 @@
         </div>
     </section>
 
-    <section class="py-20 relative z-10">
+    <section class="py-10 relative z-10">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center p-6 glass rounded-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="0">
-                    <i class="fas fa-shipping-fast text-3xl text-brand-gold mb-4"></i>
-                    <h3 class="font-bold mb-2">Быстрая доставка</h3>
-                    <p class="text-xs text-gray-500">По всему Казахстану</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="text-center p-6 bg-white/50 backdrop-blur rounded-2xl border border-white hover:-translate-y-2 transition duration-300 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4"><i class="fas fa-shipping-fast text-xl"></i></div>
+                    <h3 class="font-bold text-sm mb-1">Быстрая доставка</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">Весь Казахстан</p>
                 </div>
-                <div class="text-center p-6 glass rounded-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-shield-alt text-3xl text-brand-gold mb-4"></i>
-                    <h3 class="font-bold mb-2">Надежность</h3>
-                    <p class="text-xs text-gray-500">Сертифицированный товар</p>
+                <div class="text-center p-6 bg-white/50 backdrop-blur rounded-2xl border border-white hover:-translate-y-2 transition duration-300 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4"><i class="fas fa-award text-xl"></i></div>
+                    <h3 class="font-bold text-sm mb-1">Оригинал</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">Сертификаты</p>
                 </div>
-                <div class="text-center p-6 glass rounded-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-gift text-3xl text-brand-gold mb-4"></i>
-                    <h3 class="font-bold mb-2">Подарки</h3>
-                    <p class="text-xs text-gray-500">К каждому заказу</p>
+                <div class="text-center p-6 bg-white/50 backdrop-blur rounded-2xl border border-white hover:-translate-y-2 transition duration-300 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4"><i class="fas fa-gift text-xl"></i></div>
+                    <h3 class="font-bold text-sm mb-1">Подарки</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">Каждому клиенту</p>
                 </div>
-                <div class="text-center p-6 glass rounded-2xl hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-headset text-3xl text-brand-gold mb-4"></i>
-                    <h3 class="font-bold mb-2">Поддержка</h3>
-                    <p class="text-xs text-gray-500">24/7 для клиентов</p>
+                <div class="text-center p-6 bg-white/50 backdrop-blur rounded-2xl border border-white hover:-translate-y-2 transition duration-300 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4"><i class="fas fa-headset text-xl"></i></div>
+                    <h3 class="font-bold text-sm mb-1">Поддержка</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wide">24/7 Онлайн</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="products" class="py-20 bg-white relative z-10">
+    <section id="products" class="py-20 relative z-10">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-brand-gold font-bold tracking-widest text-xs uppercase">Bestsellers</span>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Наши Товары</h2>
+                <span class="text-brand-gold font-bold tracking-[0.2em] text-xs uppercase bg-white px-4 py-1 rounded-full shadow-sm">Bestsellers</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-4">Наша Коллекция</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                 
                 <div class="group relative" data-aos="fade-right">
-                    <div class="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100 rounded-3xl transform rotate-1 group-hover:rotate-2 transition"></div>
-                    <div class="glass relative rounded-3xl p-6 border border-white/50 h-full flex flex-col">
-                        <div class="w-full aspect-square bg-gray-200 rounded-2xl mb-6 flex items-center justify-center overflow-hidden relative group-hover:shadow-xl transition-shadow duration-300">
-                            <div class="text-center text-gray-400">
-                                <i class="fas fa-camera text-4xl mb-2"></i>
-                                <p class="text-sm">Место для фото<br>Аэрогриля</p>
-                            </div>
-                            <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">-20%</div>
-                        </div>
-
-                        <h3 class="font-serif text-3xl font-bold mb-2">Умный Аэрогриль K-Pro</h3>
-                        <p class="text-gray-500 mb-6 text-sm line-clamp-2">Готовьте без масла! Картошка фри, сочный стейк и выпечка — всё в одном устройстве.</p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100 rounded-[2rem] transform rotate-1 group-hover:rotate-2 transition opacity-50"></div>
+                    <div class="glass relative rounded-[2rem] p-8 border border-white h-full flex flex-col hover:shadow-2xl transition-all duration-500">
                         
-                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-600 mb-6">
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Сенсорный экран</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 5 литров</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Таймер</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Легкая мойка</div>
+                        <div class="w-full aspect-square bg-gray-100 rounded-2xl mb-8 flex items-center justify-center overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500 border border-gray-200">
+                            <div class="text-center text-gray-400">
+                                <i class="fas fa-camera text-5xl mb-3 opacity-30"></i>
+                                <p class="text-xs uppercase tracking-widest">Фото Аэрогриля</p>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">-20%</div>
                         </div>
 
-                        <div class="mt-auto flex items-center justify-between">
-                            <div>
-                                <div class="text-gray-400 line-through text-sm">45 000 ₸</div>
-                                <div class="text-2xl font-bold text-brand-dark">35 990 ₸</div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold">Умный Аэрогриль</h3>
+                            <div class="flex text-brand-gold text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
-                            <a href="https://wa.me/77000000000?text=Здравствуйте, хочу заказать Аэрогриль" class="bg-brand-dark text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-brand-gold transition hover:scale-110">
-                                <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <p class="text-gray-500 mb-6 text-sm leading-relaxed">Готовьте любимые блюда без капли масла! Хрустящая корочка, сочное мясо и здоровая еда для всей семьи.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 text-xs text-gray-600 mb-8 font-semibold">
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Сенсорный LED</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Объем 5л</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Таймер</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Легкая мойка</div>
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between border-t border-gray-200 pt-6">
+                            <div>
+                                <div class="text-gray-400 line-through text-xs font-bold">45 000 ₸</div>
+                                <div class="text-3xl font-serif font-bold text-brand-dark">35 990 ₸</div>
+                            </div>
+                            <a href="https://wa.me/77000000000?text=Здравствуйте, хочу заказать Аэрогриль" class="group/btn relative overflow-hidden bg-brand-dark text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-brand-gold hover:shadow-lg flex items-center gap-2">
+                                <span>Заказать</span> <i class="fas fa-arrow-right group-hover/btn:translate-x-1 transition"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative" data-aos="fade-left">
-                    <div class="absolute inset-0 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-3xl transform -rotate-1 group-hover:-rotate-2 transition"></div>
-                    <div class="glass relative rounded-3xl p-6 border border-white/50 h-full flex flex-col">
-                        <div class="w-full aspect-square bg-gray-200 rounded-2xl mb-6 flex items-center justify-center overflow-hidden relative group-hover:shadow-xl transition-shadow duration-300">
-                            <div class="text-center text-gray-400">
-                                <i class="fas fa-camera text-4xl mb-2"></i>
-                                <p class="text-sm">Место для фото<br>Вафельницы</p>
-                            </div>
-                            <div class="absolute top-4 right-4 bg-brand-gold text-white text-xs font-bold px-3 py-1 rounded-full">ХИТ</div>
-                        </div>
-
-                        <h3 class="font-serif text-3xl font-bold mb-2">Венская Вафельница W-Max</h3>
-                        <p class="text-gray-500 mb-6 text-sm line-clamp-2">Идеальные золотистые вафли за 3 минуты. Антипригарное покрытие и стильный дизайн.</p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-[2rem] transform -rotate-1 group-hover:-rotate-2 transition opacity-50"></div>
+                    <div class="glass relative rounded-[2rem] p-8 border border-white h-full flex flex-col hover:shadow-2xl transition-all duration-500">
                         
-                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-600 mb-6">
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Быстрый нагрев</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Сменные панели</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Книга рецептов</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Компактность</div>
+                        <div class="w-full aspect-square bg-gray-100 rounded-2xl mb-8 flex items-center justify-center overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500 border border-gray-200">
+                             <div class="text-center text-gray-400">
+                                <i class="fas fa-camera text-5xl mb-3 opacity-30"></i>
+                                <p class="text-xs uppercase tracking-widest">Фото Вафельницы</p>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-brand-gold text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">ХИТ</div>
                         </div>
 
-                        <div class="mt-auto flex items-center justify-between">
-                            <div>
-                                <div class="text-gray-400 line-through text-sm">25 000 ₸</div>
-                                <div class="text-2xl font-bold text-brand-dark">18 990 ₸</div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl md:text-3xl font-bold">Венская Вафельница</h3>
+                            <div class="flex text-brand-gold text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
-                            <a href="https://wa.me/77000000000?text=Здравствуйте, хочу заказать Вафельницу" class="bg-brand-dark text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-brand-gold transition hover:scale-110">
-                                <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <p class="text-gray-500 mb-6 text-sm leading-relaxed">Идеальные золотистые вафли за 3 минуты. Радуйте себя и детей вкусными завтраками каждое утро.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 text-xs text-gray-600 mb-8 font-semibold">
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Быстрый нагрев</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Антипригар</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Сменные панели</div>
+                            <div class="flex items-center gap-2 bg-white/50 p-2 rounded-lg"><i class="fas fa-check-circle text-green-500"></i> Компактность</div>
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between border-t border-gray-200 pt-6">
+                            <div>
+                                <div class="text-gray-400 line-through text-xs font-bold">25 000 ₸</div>
+                                <div class="text-3xl font-serif font-bold text-brand-dark">18 990 ₸</div>
+                            </div>
+                            <a href="https://wa.me/77000000000?text=Здравствуйте, хочу заказать Вафельницу" class="group/btn relative overflow-hidden bg-brand-dark text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-brand-gold hover:shadow-lg flex items-center gap-2">
+                                <span>Заказать</span> <i class="fas fa-arrow-right group-hover/btn:translate-x-1 transition"></i>
                             </a>
                         </div>
                     </div>
@@ -272,68 +283,70 @@
 
     <section id="about" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-brand-dark"></div>
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         
         <div class="container mx-auto px-6 relative z-10 text-center text-white">
-            <h2 class="font-serif text-4xl md:text-5xl mb-6" data-aos="zoom-in">KASSENOVA — это про уют</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
+            <h2 class="font-serif text-4xl md:text-5xl mb-6 tracking-tight" data-aos="zoom-in">KASSENOVA — это про уют</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12 text-lg font-light leading-relaxed">
                 Мы отбираем только ту технику, которой пользуемся сами. Гарантия качества, стиль и функциональность в каждом приборе.
             </p>
-            <a href="https://wa.me/77000000000" class="inline-flex items-center gap-3 bg-brand-gold text-brand-dark px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition shadow-lg hover:shadow-brand-gold/50" data-aos="flip-up">
-                <i class="fab fa-whatsapp"></i> Написать менеджеру
+            <a href="https://wa.me/77000000000" class="inline-flex items-center gap-3 bg-brand-gold text-brand-dark px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-brand-gold hover:scale-105" data-aos="flip-up">
+                <i class="fab fa-whatsapp text-2xl"></i> Написать менеджеру
             </a>
         </div>
     </section>
 
-    <footer id="contacts" class="bg-black text-white py-12 border-t border-white/10">
+    <footer id="contacts" class="bg-[#111] text-white py-16 border-t border-white/5 relative z-20">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <div class="font-serif text-2xl font-bold tracking-widest mb-2">KASSENOVA</div>
-                <p class="text-gray-500 text-sm">Premium Home Appliances</p>
+                <div class="font-serif text-3xl font-bold tracking-widest mb-2 text-gradient">KASSENOVA</div>
+                <p class="text-gray-500 text-sm tracking-wider uppercase">Premium Home Appliances</p>
             </div>
             
-            <div class="flex gap-6">
-                <a href="https://t.me/aselya123450" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0088cc] transition">
-                    <i class="fab fa-telegram-plane"></i>
+            <div class="flex gap-4">
+                <a href="https://t.me/aselya123450" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#0088cc] hover:border-[#0088cc] hover:scale-110 transition duration-300 group">
+                    <i class="fab fa-telegram-plane text-xl group-hover:rotate-12 transition"></i>
                 </a>
-                <a href="https://wa.me/77000000000" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#25D366] transition">
-                    <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/77000000000" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] hover:scale-110 transition duration-300 group">
+                    <i class="fab fa-whatsapp text-xl group-hover:rotate-12 transition"></i>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pink-600 transition">
-                    <i class="fab fa-instagram"></i>
+                <a href="#" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 hover:scale-110 transition duration-300 group">
+                    <i class="fab fa-instagram text-xl group-hover:rotate-12 transition"></i>
                 </a>
             </div>
         </div>
-        <div class="container mx-auto px-6 mt-8 pt-8 border-t border-white/5 text-center text-gray-600 text-xs">
+        <div class="container mx-auto px-6 mt-12 pt-8 border-t border-white/5 text-center text-gray-700 text-xs tracking-wider uppercase font-bold">
             &copy; 2026 Kassenova Store. All rights reserved.
         </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
-        <a href="https://t.me/aselya123450" class="w-14 h-14 bg-[#0088cc] rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition animate-bounce" style="animation-duration: 2s;">
+    <div class="fixed bottom-8 right-6 flex flex-col gap-4 z-50">
+        <a href="https://t.me/aselya123450" target="_blank" class="w-14 h-14 bg-[#0088cc] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition animate-bounce" style="animation-duration: 3s;">
             <i class="fab fa-telegram-plane text-2xl"></i>
         </a>
-        <a href="https://wa.me/77000000000" class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition animate-pulse">
-            <i class="fab fa-whatsapp text-2xl"></i>
+        <a href="https://wa.me/77000000000" class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition animate-pulse">
+            <i class="fab fa-whatsapp text-3xl"></i>
         </a>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Инициализация анимаций
+        // Запуск анимаций
         AOS.init({
             once: true,
             offset: 50,
-            duration: 800,
+            duration: 1000,
         });
 
-        // Прелоадер
+        // Скрытие прелоадера
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
             setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 800);
         });
     </script>
 </body>
