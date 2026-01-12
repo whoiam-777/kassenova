@@ -33,7 +33,6 @@
         .glass { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
         .text-gradient { background: linear-gradient(to right, #d4af37, #b46b57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Стили для корзины */
         #cart-sidebar { transition: transform 0.3s ease-in-out; }
         .cart-open { transform: translateX(0) !important; }
         .cart-closed { transform: translateX(100%); }
@@ -63,8 +62,8 @@
     <section class="pt-32 pb-8 text-center relative z-10">
         <div class="container mx-auto px-6">
             <span class="text-brand-gold font-bold tracking-[0.2em] text-xs uppercase bg-white px-4 py-1 rounded-full shadow-sm">B2B Partnership</span>
-            <h1 class="font-serif text-4xl font-bold mt-4 mb-2">Формирование Заказа</h1>
-            <p class="text-gray-500 text-sm max-w-xl mx-auto">Добавляйте товары в корзину. <br> Минимальная сумма заказа: 100 000 ₸</p>
+            <h1 class="font-serif text-4xl font-bold mt-4 mb-2">Оптовый Заказ</h1>
+            <p class="text-gray-500 text-sm max-w-xl mx-auto">Калькулятор автоматически рассчитает сумму.</p>
         </div>
     </section>
 
@@ -77,7 +76,7 @@
                         <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 1</p></div>
                     </div>
                     <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Аэрогриль Premium X1</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Мин: 5 шт.</p>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 35 000 ₸</p>
                     <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
                         <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">35 000 ₸</span>
                         <button onclick="addToCart('Аэрогриль Premium X1', 35000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
@@ -89,7 +88,7 @@
                         <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 2</p></div>
                     </div>
                     <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Вафельница Grand</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Мин: 10 шт.</p>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 12 000 ₸</p>
                     <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
                         <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">12 000 ₸</span>
                         <button onclick="addToCart('Вафельница Grand', 12000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
@@ -101,7 +100,7 @@
                         <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 3</p></div>
                     </div>
                     <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Блендер Pro 500</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Мин: 5 шт.</p>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 22 000 ₸</p>
                     <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
                         <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">22 000 ₸</span>
                         <button onclick="addToCart('Блендер Pro 500', 22000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
@@ -113,40 +112,112 @@
                         <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 4</p></div>
                     </div>
                     <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Мультипекарь 3в1</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Мин: 5 шт.</p>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 18 500 ₸</p>
                     <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
                         <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">18 500 ₸</span>
                         <button onclick="addToCart('Мультипекарь 3в1', 18500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                     </div>
                 </div>
 
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 5</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Чайник Smart</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 10 500 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">10 500 ₸</span>
+                        <button onclick="addToCart('Чайник Smart', 10500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
                 </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 6</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Кофеварка</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 45 000 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">45 000 ₸</span>
+                        <button onclick="addToCart('Кофеварка', 45000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 7</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Тостер Gold</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 14 000 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">14 000 ₸</span>
+                        <button onclick="addToCart('Тостер Gold', 14000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
+                </div>
+
+                 <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 8</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Миксер Planeta</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 38 000 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">38 000 ₸</span>
+                        <button onclick="addToCart('Миксер Planeta', 38000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
+                </div>
+                
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 9</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Пылесос Handheld</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 25 000 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">25 000 ₸</span>
+                        <button onclick="addToCart('Пылесос Handheld', 25000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="w-full aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center text-gray-400"><i class="fas fa-box-open text-3xl mb-2"></i><p class="text-[9px] uppercase">Фото 10</p></div>
+                    </div>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Утюг Steam</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 16 000 ₸</p>
+                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
+                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">16 000 ₸</span>
+                        <button onclick="addToCart('Утюг Steam', 16000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
     
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-[85%] md:w-[400px] bg-white z-[70] shadow-2xl cart-closed flex flex-col">
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-[85%] md:w-[450px] bg-white z-[70] shadow-2xl cart-closed flex flex-col">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-brand-light">
-            <h2 class="font-serif text-xl font-bold">Ваш заказ</h2>
+            <h2 class="font-serif text-xl font-bold">Оптовая корзина</h2>
             <button onclick="toggleCart()" class="text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
         </div>
 
         <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <div id="empty-cart-msg" class="text-center text-gray-400 mt-10">
-                <i class="fas fa-shopping-basket text-4xl mb-3 opacity-30"></i>
-                <p>Корзина пуста</p>
-                <p class="text-xs mt-2">Добавьте товары из каталога</p>
             </div>
+        
+        <div id="empty-cart-msg" class="text-center text-gray-400 mt-10 hidden">
+            <i class="fas fa-shopping-basket text-4xl mb-3 opacity-30"></i>
+            <p>Заказ не сформирован</p>
         </div>
 
-        <div class="p-6 border-t border-gray-100 bg-white">
+        <div class="p-6 border-t border-gray-100 bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
             <div class="flex justify-between items-center mb-4">
-                <span class="text-gray-500">Итого:</span>
+                <span class="text-gray-500 font-bold">ИТОГО:</span>
                 <span id="cart-total" class="font-serif font-bold text-2xl text-brand-dark">0 ₸</span>
             </div>
             <button onclick="checkout()" class="w-full bg-brand-dark text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-brand-gold transition shadow-lg flex items-center justify-center gap-2">
-                <span>Отправить в WhatsApp</span> <i class="fab fa-whatsapp text-lg"></i>
+                <span>Оформить в WhatsApp</span> <i class="fab fa-whatsapp text-lg"></i>
             </button>
         </div>
     </div>
@@ -155,10 +226,13 @@
     <script>
         AOS.init();
 
-        // --- ЛОГИКА КОРЗИНЫ ---
-        let cart = []; // Хранилище товаров
+        // --- УМНАЯ ЛОГИКА КОРЗИНЫ ---
+        
+        // 1. Загружаем из памяти или создаем пустую
+        let cart = JSON.parse(localStorage.getItem('wholesaleCart')) || [];
+        updateCartUI(); // Сразу обновляем вид при загрузке
 
-        // 1. Открыть/Закрыть корзину
+        // Открыть/Закрыть
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
             const overlay = document.getElementById('cart-overlay');
@@ -167,7 +241,6 @@
                 sidebar.classList.remove('cart-closed');
                 sidebar.classList.add('cart-open');
                 overlay.classList.remove('hidden');
-                // Небольшая задержка для плавного появления затемнения
                 setTimeout(() => overlay.classList.remove('opacity-0'), 10);
             } else {
                 sidebar.classList.remove('cart-open');
@@ -177,79 +250,101 @@
             }
         }
 
-        // 2. Добавить товар
+        // Добавить товар (С ГРУППИРОВКОЙ)
         function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCartUI();
-            
-            // Если корзина закрыта - открываем, чтобы показать результат
-            const sidebar = document.getElementById('cart-sidebar');
-            if (sidebar.classList.contains('cart-closed')) {
-                toggleCart();
+            // Ищем, есть ли уже такой товар
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.qty++; // Если есть, увеличиваем кол-во
+            } else {
+                cart.push({ name, price, qty: 1 }); // Если нет, добавляем
             }
+            
+            saveAndRender();
+            
+            // Если корзина закрыта, открываем
+            const sidebar = document.getElementById('cart-sidebar');
+            if (sidebar.classList.contains('cart-closed')) toggleCart();
         }
 
-        // 3. Удалить товар
-        function removeFromCart(index) {
-            cart.splice(index, 1);
+        // Изменить количество (+ или -)
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            
+            // Если стало 0 или меньше — удаляем
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            saveAndRender();
+        }
+
+        // Сохранить в память и обновить экран
+        function saveAndRender() {
+            localStorage.setItem('wholesaleCart', JSON.stringify(cart));
             updateCartUI();
         }
 
-        // 4. Обновить внешний вид корзины
+        // Отрисовка корзины (HTML)
         function updateCartUI() {
             const container = document.getElementById('cart-items');
             const emptyMsg = document.getElementById('empty-cart-msg');
             const totalEl = document.getElementById('cart-total');
             const countBadge = document.getElementById('cart-count');
 
-            // Очищаем список
             container.innerHTML = '';
+            
+            // Считаем общее количество товаров (штук)
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
             if (cart.length === 0) {
-                container.appendChild(emptyMsg);
                 emptyMsg.style.display = 'block';
                 countBadge.style.transform = 'scale(0)';
             } else {
                 emptyMsg.style.display = 'none';
-                countBadge.innerText = cart.length;
+                countBadge.innerText = totalItems;
                 countBadge.style.transform = 'scale(1)';
 
-                // Генерируем элементы списка
                 cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.qty;
                     const el = document.createElement('div');
-                    el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100 animate-pulse-once';
+                    el.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100';
                     el.innerHTML = `
-                        <div>
+                        <div class="flex-1">
                             <div class="font-bold text-sm text-brand-dark">${item.name}</div>
-                            <div class="text-xs text-brand-gold font-bold">${item.price.toLocaleString()} ₸</div>
+                            <div class="text-xs text-gray-500">${item.price.toLocaleString()} ₸ / шт</div>
+                            <div class="text-xs font-bold text-brand-gold mt-1">Всего: ${itemTotal.toLocaleString()} ₸</div>
                         </div>
-                        <button onclick="removeFromCart(${index})" class="text-gray-400 hover:text-red-500 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"><i class="fas fa-trash-alt text-xs"></i></button>
+                        
+                        <div class="flex items-center gap-3 bg-white px-2 py-1 rounded-full border border-gray-200 ml-2">
+                            <button onclick="changeQty(${index}, -1)" class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-red-500 font-bold">-</button>
+                            <span class="font-bold text-sm min-w-[20px] text-center">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-green-500 font-bold">+</button>
+                        </div>
                     `;
                     container.appendChild(el);
                 });
             }
 
-            // Считаем сумму
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            totalEl.innerText = total.toLocaleString() + ' ₸';
+            // Общая сумма
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            totalEl.innerText = totalAmount.toLocaleString() + ' ₸';
         }
 
-        // 5. Отправка в WhatsApp
+        // Отправка
         function checkout() {
             if (cart.length === 0) return alert('Корзина пуста!');
 
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             
-            // Формируем красивый список для сообщения
-            let message = "Здравствуйте! Хочу сделать оптовый заказ:\n\n";
+            let message = "Здравствуйте! Хочу сделать ОПТОВЫЙ заказ:\n\n";
             cart.forEach((item, i) => {
-                message += `${i + 1}. ${item.name} - ${item.price} ₸\n`;
+                message += `${i + 1}. ${item.name} (x${item.qty}) — ${(item.price * item.qty).toLocaleString()} ₸\n`;
             });
-            message += `\n💰 ИТОГО: ${total.toLocaleString()} ₸`;
+            message += `\n💰 ИТОГО К ОПЛАТЕ: ${totalAmount.toLocaleString()} ₸`;
 
-            // Кодируем для ссылки
-            const encodedMsg = encodeURIComponent(message);
-            window.open(`https://wa.me/77058111630?text=${encodedMsg}`, '_blank');
+            window.open(`https://wa.me/77058111630?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
