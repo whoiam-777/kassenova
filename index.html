@@ -28,6 +28,10 @@
 
     <style>
         html, body { overflow-x: hidden; width: 100%; position: relative; }
+        
+        /* Исправление скролла */
+        body.modal-open { overflow: hidden !important; height: 100vh; touch-action: none; }
+
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #fff; }
         ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
@@ -40,11 +44,17 @@
         .hide-scroll::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
         .hide-scroll::-webkit-scrollbar-track { background: rgba(212, 175, 55, 0.1); }
 
-        /* Стили для модального окна */
+        /* Стили для модального окна (ИСПРАВЛЕНО) */
         #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
         #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
         #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
-        .modal-content { max-height: 90vh; overflow-y: auto; }
+        
+        .modal-content { 
+            max-height: 80vh; /* Чуть меньше, чтобы влезало на мобилки */
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+            overscroll-behavior: contain; /* БЛОКИРУЕТ скролл фона */
+        }
     </style>
 </head>
 <body class="font-sans bg-brand-light text-brand-dark selection:bg-brand-gold selection:text-white w-full max-w-[100vw]">
@@ -398,7 +408,7 @@
         menuBtn.addEventListener('click', () => { isMenuOpen = !isMenuOpen; mobileMenu.classList.toggle('-translate-y-[200%]'); mobileMenu.classList.toggle('opacity-0'); mobileMenu.classList.toggle('pointer-events-none'); menuIcon.classList.toggle('fa-bars'); menuIcon.classList.toggle('fa-times'); });
         document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { isMenuOpen = false; mobileMenu.classList.add('-translate-y-[200%]', 'opacity-0', 'pointer-events-none'); menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars'); }));
 
-        // МОДАЛЬНОЕ ОКНО - ЛОГИКА
+        // МОДАЛЬНОЕ ОКНО - ЛОГИКА (ОБНОВЛЕННАЯ)
         const modal = document.getElementById('product-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalPrice = document.getElementById('modal-price');
@@ -409,41 +419,37 @@
         const modalBtn = document.getElementById('modal-btn');
 
         function openProduct(btn) {
-            // Находим карточку товара
             const card = btn.closest('.product-card');
             
-            // Берем данные
             const title = card.querySelector('.product-title').innerText;
             const price = card.querySelector('.product-price').innerText;
             
-            // Скрытые данные
             const dataDiv = card.querySelector('.product-data');
             const desc = dataDiv.querySelector('.data-desc').innerHTML;
             const specs = dataDiv.querySelector('.data-specs').innerHTML;
             
-            // Пробуем найти фото (если есть data-img, иначе ищем обычное)
-            // Здесь для примера используем заглушку, так как у тебя еще нет фото
-            // Если добавишь фото в data-img, раскомментируй логику ниже
-            
-            // Заполняем модалку
+            // Заполнение
             modalTitle.innerText = title;
             modalPrice.innerText = price;
             modalDesc.innerHTML = desc;
             modalSpecs.innerHTML = specs;
             
-            // Ссылка на WhatsApp с предзаполненным текстом
+            // Если есть фото
+            // const imgSrc = dataDiv.querySelector('.data-img').innerText; 
+            // if (imgSrc) { modalImg.src = imgSrc; modalImg.classList.remove('hidden'); modalImgPlace.classList.add('hidden'); }
+
             modalBtn.href = `https://wa.me/77058111630?text=Здравствуйте! Хочу заказать ${title} за ${price}`;
 
-            // Показываем окно
+            // Показываем окно и БЛОКИРУЕМ СКРОЛЛ
             modal.classList.remove('hidden-modal');
             modal.classList.add('visible-modal');
-            document.body.style.overflow = 'hidden'; // Блокируем скролл сайта
+            document.body.classList.add('modal-open'); 
         }
 
         function closeProduct() {
             modal.classList.remove('visible-modal');
             modal.classList.add('hidden-modal');
-            document.body.style.overflow = ''; // Возвращаем скролл
+            document.body.classList.remove('modal-open');
         }
     </script>
 </body>
