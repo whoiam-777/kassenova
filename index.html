@@ -93,29 +93,46 @@
         </div>
     </header>
 
-    <section id="home" class="relative min-h-screen flex items-center pt-20 w-full overflow-hidden">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
-            <div data-aos="fade-right">
-                <div class="inline-block px-4 py-1 bg-white/80 border border-brand-gold/30 rounded-full text-[10px] font-bold tracking-[0.2em] mb-6 uppercase text-brand-gold backdrop-blur-sm shadow-sm">New Collection 2026</div>
-                <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-6 text-brand-dark">Искусство <br> <span class="text-gradient italic font-light">Вкусной Жизни</span></h1>
-                <p class="text-gray-500 text-lg mb-8 max-w-md leading-relaxed font-light">Премиальная техника для вашей кухни. Аэрогрили и вафельницы, которые вдохновляют на шедевры.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#products" class="px-8 py-4 bg-brand-dark text-white rounded-xl font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition text-center flex items-center justify-center gap-3">Смотреть каталог <i class="fas fa-arrow-right text-xs"></i></a>
-                    <a href="https://t.me/aselya123450" target="_blank" class="px-8 py-4 glass text-brand-dark border border-brand-dark/5 rounded-xl font-bold hover:bg-white transition text-center flex items-center justify-center gap-2"><i class="fab fa-telegram text-[#0088cc]"></i> Telegram</a>
-                </div>
+    <section id="home" class="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center">
+        
+        <div class="absolute inset-0 z-0">
+            <img src="images/hero-bg.jpg" alt="Kassenova Background" class="w-full h-full object-cover">
+            
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center text-white" data-aos="fade-up">
+            
+            <span class="inline-block py-1 px-4 border border-white/30 rounded-full text-[10px] md:text-xs font-bold tracking-[0.3em] mb-6 backdrop-blur-md uppercase text-brand-gold">
+                Official Online Store
+            </span>
+
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
+                KASSENOVA
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+                Интернет-магазин премиальной бытовой техники.<br>
+                Здесь вы найдёте технологии, которые создают уют и вкус жизни.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                
+                <a href="https://wa.me/77058111630" class="group relative w-full sm:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:shadow-[0_0_40px_rgba(37,211,102,0.7)] hover:-translate-y-1 flex items-center justify-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>Написать в WhatsApp</span>
+                </a>
+
+                <a href="https://t.me/aselya123450" target="_blank" class="group relative w-full sm:w-auto px-8 py-4 bg-[#0088cc] hover:bg-[#0077b5] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(0,136,204,0.5)] hover:shadow-[0_0_40px_rgba(0,136,204,0.7)] hover:-translate-y-1 flex items-center justify-center gap-3">
+                    <i class="fab fa-telegram-plane text-2xl"></i>
+                    <span>Наш Telegram</span>
+                </a>
+
             </div>
-            <div class="relative hidden md:flex justify-center" data-aos="fade-left">
-                <div class="relative w-[400px] h-[500px] border border-white/50 rounded-[40px] p-2 glass animate-float shadow-2xl">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-50 to-white rounded-[32px] overflow-hidden flex flex-col items-center justify-center relative">
-                        <i class="fas fa-crown text-brand-gold text-5xl mb-4 opacity-50"></i>
-                        <h3 class="font-serif text-3xl text-center">Premium<br>Quality</h3>
-                    </div>
-                    <div class="absolute -bottom-8 -left-8 glass p-5 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl"><i class="fas fa-shield-alt"></i></div>
-                        <div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Гарантия</div><div class="font-bold text-brand-dark">12 месяцев</div></div>
-                    </div>
-                </div>
-            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </section>
 
