@@ -36,6 +36,12 @@
         #cart-sidebar { transition: transform 0.3s ease-in-out; }
         .cart-open { transform: translateX(0) !important; }
         .cart-closed { transform: translateX(100%); }
+
+        /* Стили для модального окна */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        .modal-content { max-height: 90vh; overflow-y: auto; }
     </style>
 </head>
 <body class="font-sans bg-brand-light text-brand-dark overflow-x-hidden selection:bg-brand-gold selection:text-white">
@@ -71,129 +77,284 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-1.jpg" alt="Аэрогриль" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Аэрогриль Premium X1</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 35 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">35 000 ₸</span>
-                        <button onclick="addToCart('Аэрогриль Premium X1', 35000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Аэрогриль Premium X1</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">35000</span> ₸</p>
+                    
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">35 000 ₸</span>
+                            <button onclick="addToCart('Аэрогриль Premium X1', 35000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-1.jpg</div>
+                        <div class="data-desc">Мощный аэрогриль для здорового питания. Сенсорное управление, большая чаша.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 5 шт.</p>
+                            <p><strong>Объем:</strong> 5 литров</p>
+                            <p><strong>Вес с коробкой:</strong> 5.1 кг</p>
+                            <p><strong>Размер коробки:</strong> 35x38x35 см</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-2.jpg" alt="Вафельница" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Вафельница Grand</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 12 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">12 000 ₸</span>
-                        <button onclick="addToCart('Вафельница Grand', 12000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Вафельница Grand</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">12000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">12 000 ₸</span>
+                            <button onclick="addToCart('Вафельница Grand', 12000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-2.jpg</div>
+                        <div class="data-desc">Вафельница со сменными панелями (гриль, вафли, сэндвичи).</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 10 шт.</p>
+                            <p><strong>Мощность:</strong> 1000 Вт</p>
+                            <p><strong>Вес с коробкой:</strong> 2.8 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-3.jpg" alt="Блендер" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Блендер Pro 500</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 22 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">22 000 ₸</span>
-                        <button onclick="addToCart('Блендер Pro 500', 22000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Блендер Pro 500</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">22000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">22 000 ₸</span>
+                            <button onclick="addToCart('Блендер Pro 500', 22000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-3.jpg</div>
+                        <div class="data-desc">Стационарный блендер со стеклянной чашей. Колет лед.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 5 шт.</p>
+                            <p><strong>Чаша:</strong> Стекло, 1.5л</p>
+                            <p><strong>Вес:</strong> 3.5 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-4.jpg" alt="Мультипекарь" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Мультипекарь 3в1</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 18 500 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">18 500 ₸</span>
-                        <button onclick="addToCart('Мультипекарь 3в1', 18500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Мультипекарь 3в1</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">18500</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">18 500 ₸</span>
+                            <button onclick="addToCart('Мультипекарь 3в1', 18500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                     <div class="hidden product-data">
+                        <div class="data-img">images/w-4.jpg</div>
+                        <div class="data-desc">Универсальное устройство для выпечки с 3 сменными панелями.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 5 шт.</p>
+                            <p><strong>Комплект:</strong> 3 панели</p>
+                            <p><strong>Вес:</strong> 2.0 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-5.jpg" alt="Чайник" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Чайник Smart</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 10 500 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">10 500 ₸</span>
-                        <button onclick="addToCart('Чайник Smart', 10500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Чайник Smart</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">10500</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">10 500 ₸</span>
+                            <button onclick="addToCart('Чайник Smart', 10500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-5.jpg</div>
+                        <div class="data-desc">Электрический чайник с подсветкой и функцией поддержания температуры.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 10 шт.</p>
+                            <p><strong>Материал:</strong> Стекло</p>
+                            <p><strong>Вес:</strong> 1.2 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-6.jpg" alt="Кофеварка" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Кофеварка</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 45 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">45 000 ₸</span>
-                        <button onclick="addToCart('Кофеварка', 45000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Кофеварка</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">45000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">45 000 ₸</span>
+                            <button onclick="addToCart('Кофеварка', 45000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-6.jpg</div>
+                        <div class="data-desc">Рожковая кофеварка с капучинатором. Давление 15 бар.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 3 шт.</p>
+                            <p><strong>Давление:</strong> 15 бар</p>
+                            <p><strong>Вес:</strong> 4.8 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-7.jpg" alt="Тостер" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Тостер Gold</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 14 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">14 000 ₸</span>
-                        <button onclick="addToCart('Тостер Gold', 14000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Тостер Gold</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">14000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">14 000 ₸</span>
+                            <button onclick="addToCart('Тостер Gold', 14000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-7.jpg</div>
+                        <div class="data-desc">Стильный тостер на 2 тоста с поддоном для крошек.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 5 шт.</p>
+                            <p><strong>Режимы:</strong> 7 степеней</p>
+                            <p><strong>Вес:</strong> 1.5 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                 <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-8.jpg" alt="Миксер" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Миксер Planeta</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 38 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">38 000 ₸</span>
-                        <button onclick="addToCart('Миксер Planeta', 38000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Миксер Planeta</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">38000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">38 000 ₸</span>
+                            <button onclick="addToCart('Миксер Planeta', 38000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-8.jpg</div>
+                        <div class="data-desc">Планетарный миксер с чашей из нержавеющей стали.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 2 шт.</p>
+                            <p><strong>Насадки:</strong> 3 шт.</p>
+                            <p><strong>Вес:</strong> 5.5 кг</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-9.jpg" alt="Пылесос" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Пылесос Handheld</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 25 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">25 000 ₸</span>
-                        <button onclick="addToCart('Пылесос Handheld', 25000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Пылесос Handheld</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">25000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">25 000 ₸</span>
+                            <button onclick="addToCart('Пылесос Handheld', 25000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                    <div class="hidden product-data">
+                        <div class="data-img">images/w-9.jpg</div>
+                        <div class="data-desc">Ручной вертикальный пылесос. Компактный и мощный.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 5 шт.</p>
+                            <p><strong>Тип:</strong> Циклонный</p>
+                            <p><strong>Вес:</strong> 2.5 кг</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col" data-aos="fade-up">
+                <div class="glass p-4 rounded-xl group hover:shadow-xl transition duration-300 flex flex-col product-card" data-aos="fade-up">
                     <div class="w-full aspect-square bg-white rounded-lg mb-3 flex items-center justify-center relative overflow-hidden border border-gray-100">
                         <img src="images/w-10.jpg" alt="Утюг" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2">Утюг Steam</h3>
-                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: 16 000 ₸</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-gray-300 pt-3">
-                        <span class="font-serif font-bold text-sm md:text-lg text-brand-dark">16 000 ₸</span>
-                        <button onclick="addToCart('Утюг Steam', 16000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                    <h3 class="font-bold text-xs md:text-sm mb-1 line-clamp-2 product-title">Утюг Steam</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Цена за шт: <span class="product-price-raw">16000</span> ₸</p>
+                    <div class="mt-auto flex flex-col gap-2 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">16 000 ₸</span>
+                            <button onclick="addToCart('Утюг Steam', 16000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
+                        </div>
+                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                    </div>
+                     <div class="hidden product-data">
+                        <div class="data-img">images/w-10.jpg</div>
+                        <div class="data-desc">Паровой утюг с керамической подошвой.</div>
+                        <div class="data-specs">
+                            <p><strong>Мин. партия:</strong> 10 шт.</p>
+                            <p><strong>Подошва:</strong> Керамика</p>
+                            <p><strong>Вес:</strong> 1.3 кг</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex justify-center items-center p-4 hidden-modal">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProduct()"></div>
+        
+        <div class="relative bg-white rounded-3xl w-full max-w-2xl modal-content shadow-2xl overflow-hidden animate-[blob_0.3s_ease-out]">
+            <button onclick="closeProduct()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-red-100 hover:text-red-500 transition z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="w-full md:w-1/2 bg-gray-100 min-h-[250px] flex items-center justify-center relative">
+                     <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                
+                <div class="w-full md:w-1/2 p-6 md:p-8">
+                    <h2 id="modal-title" class="font-serif text-2xl font-bold text-brand-dark mb-1">Название</h2>
+                    <div id="modal-price" class="text-2xl font-bold text-brand-gold mb-4">0 ₸</div>
+                    
+                    <div class="space-y-4">
+                        <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed">Описание...</p>
+                        
+                        <div class="bg-brand-light p-3 rounded-xl border border-gray-100">
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Характеристики</h4>
+                            <div id="modal-specs" class="text-xs text-gray-600 space-y-1"></div>
+                        </div>
+                    </div>
+
+                    <button id="modal-add-btn" class="mt-6 w-full bg-brand-dark text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 hover:bg-brand-gold transition shadow-lg">
+                        <span>Добавить в заказ</span> <i class="fas fa-plus-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
     
@@ -203,8 +364,7 @@
             <button onclick="toggleCart()" class="text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
         </div>
 
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
         
         <div id="empty-cart-msg" class="text-center text-gray-400 mt-10 hidden">
             <i class="fas fa-shopping-basket text-4xl mb-3 opacity-30"></i>
@@ -226,15 +386,13 @@
     <script>
         AOS.init();
 
-        // --- УМНАЯ ЛОГИКА КОРЗИНЫ ---
-        
+        // --- КОРЗИНА ---
         let cart = JSON.parse(localStorage.getItem('wholesaleCart')) || [];
         updateCartUI(); 
 
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
             const overlay = document.getElementById('cart-overlay');
-            
             if (sidebar.classList.contains('cart-closed')) {
                 sidebar.classList.remove('cart-closed');
                 sidebar.classList.add('cart-open');
@@ -256,8 +414,13 @@
                 cart.push({ name, price, qty: 1 });
             }
             saveAndRender();
+            
+            // Визуальный эффект открытия корзины
             const sidebar = document.getElementById('cart-sidebar');
             if (sidebar.classList.contains('cart-closed')) toggleCart();
+            
+            // Если открыта модалка, закрываем её
+            closeProduct(); 
         }
 
         function changeQty(index, delta) {
@@ -280,7 +443,6 @@
             const countBadge = document.getElementById('cart-count');
 
             container.innerHTML = '';
-            
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
             if (cart.length === 0) {
@@ -301,7 +463,6 @@
                             <div class="text-xs text-gray-500">${item.price.toLocaleString()} ₸ / шт</div>
                             <div class="text-xs font-bold text-brand-gold mt-1">Всего: ${itemTotal.toLocaleString()} ₸</div>
                         </div>
-                        
                         <div class="flex items-center gap-3 bg-white px-2 py-1 rounded-full border border-gray-200 ml-2">
                             <button onclick="changeQty(${index}, -1)" class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-red-500 font-bold">-</button>
                             <span class="font-bold text-sm min-w-[20px] text-center">${item.qty}</span>
@@ -318,16 +479,56 @@
 
         function checkout() {
             if (cart.length === 0) return alert('Корзина пуста!');
-
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            
             let message = "Здравствуйте! Хочу сделать ОПТОВЫЙ заказ:\n\n";
             cart.forEach((item, i) => {
                 message += `${i + 1}. ${item.name} (x${item.qty}) — ${(item.price * item.qty).toLocaleString()} ₸\n`;
             });
             message += `\n💰 ИТОГО К ОПЛАТЕ: ${totalAmount.toLocaleString()} ₸`;
-
             window.open(`https://wa.me/77058111630?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // --- МОДАЛЬНОЕ ОКНО ---
+        const modal = document.getElementById('product-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalSpecs = document.getElementById('modal-specs');
+        const modalImg = document.getElementById('modal-img');
+        const modalAddBtn = document.getElementById('modal-add-btn');
+
+        function openProduct(btn) {
+            const card = btn.closest('.product-card');
+            
+            const title = card.querySelector('.product-title').innerText;
+            const priceDisplay = card.querySelector('.product-price-display').innerText;
+            const priceRaw = parseInt(card.querySelector('.product-price-raw').innerText);
+            
+            const dataDiv = card.querySelector('.product-data');
+            const imgSrc = dataDiv.querySelector('.data-img').innerText;
+            const desc = dataDiv.querySelector('.data-desc').innerHTML;
+            const specs = dataDiv.querySelector('.data-specs').innerHTML;
+            
+            modalTitle.innerText = title;
+            modalPrice.innerText = priceDisplay;
+            modalDesc.innerHTML = desc;
+            modalSpecs.innerHTML = specs;
+            modalImg.src = imgSrc;
+            
+            // Настраиваем кнопку "Добавить" внутри модалки
+            modalAddBtn.onclick = function() {
+                addToCart(title, priceRaw);
+            };
+
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProduct() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = '';
         }
     </script>
 </body>
