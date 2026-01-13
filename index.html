@@ -99,42 +99,38 @@
         </div>
     </header>
 
-    <section id="home" class="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center">
-        
+    <section id="home" class="relative h-screen min-h-[600px] w-full overflow-hidden flex flex-col justify-end pb-20"> 
         <div class="absolute inset-0 z-0">
             <img src="images/hero-bg.jpg" alt="Kassenova Background" class="w-full h-full object-cover object-right md:object-center">
-            
-            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 text-center text-white" data-aos="fade-up">
+        <div class="container mx-auto px-6 relative z-10 text-center text-white pb-10" data-aos="fade-up">
             
-            <span class="inline-block py-1 px-4 border border-white/30 rounded-full text-[10px] md:text-xs font-bold tracking-[0.3em] mb-8 backdrop-blur-md uppercase text-brand-gold">
+            <span class="inline-block py-1 px-4 border border-white/30 rounded-full text-[10px] md:text-xs font-bold tracking-[0.3em] mb-4 backdrop-blur-md uppercase text-brand-gold">
                 Official Online Store
             </span>
 
-            <p class="text-lg md:text-xl text-gray-100 mb-12 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
-                Интернет-магазин премиальной бытовой техники.<br>
+            <h2 class="text-xl md:text-3xl font-serif font-bold mb-4 drop-shadow-lg">
+                Интернет-магазин премиальной бытовой техники
+            </h2>
+            
+            <p class="text-sm md:text-lg text-gray-300 mb-8 max-w-xl mx-auto font-light leading-relaxed drop-shadow-md">
                 Здесь вы найдёте технологии, которые создают уют и вкус жизни.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                
-                <a href="https://wa.me/77058111630" class="group relative w-full sm:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:shadow-[0_0_40px_rgba(37,211,102,0.7)] hover:-translate-y-1 flex items-center justify-center gap-3">
-                    <i class="fab fa-whatsapp text-2xl"></i>
-                    <span>Написать в WhatsApp</span>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/77058111630" class="w-full sm:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i> Написать в WhatsApp
                 </a>
-
-                <a href="https://t.me/aselya123450" target="_blank" class="group relative w-full sm:w-auto px-8 py-4 bg-[#0088cc] hover:bg-[#0077b5] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(0,136,204,0.5)] hover:shadow-[0_0_40px_rgba(0,136,204,0.7)] hover:-translate-y-1 flex items-center justify-center gap-3">
-                    <i class="fab fa-telegram-plane text-2xl"></i>
-                    <span>Наш Telegram</span>
+                <a href="https://t.me/aselya123450" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-[#0088cc] hover:bg-[#0077b5] rounded-full text-white font-bold text-sm uppercase tracking-wider transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i class="fab fa-telegram-plane text-xl"></i> Наш Telegram
                 </a>
-
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
-            <i class="fas fa-chevron-down text-2xl"></i>
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-xl"></i>
         </div>
     </section>
 
@@ -415,11 +411,6 @@
         </div>
         <div class="container mx-auto px-6 mt-12 pt-8 border-t border-white/5 text-center text-gray-700 text-xs tracking-wider uppercase font-bold">&copy; 2026 Kassenova Store. All rights reserved.</div>
     </footer>
-
-    <div class="fixed bottom-8 right-6 flex flex-col gap-4 z-50">
-        <a href="https://t.me/aselya123450" class="w-14 h-14 bg-[#0088cc] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition animate-bounce" style="animation-duration: 3s;"><i class="fab fa-telegram-plane text-2xl"></i></a>
-        <a href="https://wa.me/77058111630" class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition animate-pulse"><i class="fab fa-whatsapp text-3xl"></i></a>
-    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
