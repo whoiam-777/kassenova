@@ -38,6 +38,10 @@
         .sidebar-open { transform: translateX(0) !important; }
         .sidebar-closed { transform: translateX(100%); }
         
+        /* Оверлей: скрыт и не блокирует клики по умолчанию */
+        .overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .overlay.active { opacity: 1; pointer-events: auto; }
+
         /* Блокировка прокрутки фона */
         body.no-scroll { overflow: hidden; }
     </style>
@@ -322,7 +326,7 @@
         </div>
     </section>
 
-    <div id="details-overlay" onclick="closeDetails()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="details-overlay" onclick="closeDetails()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] overlay transition-opacity duration-300"></div>
     
     <div id="details-sidebar" class="fixed top-0 right-0 h-full w-[100%] md:w-[500px] bg-white z-[70] shadow-2xl sidebar sidebar-closed flex flex-col">
         <div class="absolute top-4 right-4 z-10">
@@ -362,9 +366,9 @@
     </div>
 
 
-    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] overlay transition-opacity duration-300"></div>
     
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-[85%] md:w-[450px] bg-white z-[70] shadow-2xl cart-closed flex flex-col">
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-[85%] md:w-[450px] bg-white z-[70] shadow-2xl sidebar sidebar-closed flex flex-col">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-brand-light">
             <h2 class="font-serif text-xl font-bold">Оптовая корзина</h2>
             <button onclick="toggleCart()" class="text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
@@ -404,17 +408,15 @@
             // Если открыта шторка товара, закрываем её
             if (detailsSidebar.classList.contains('sidebar-open')) closeDetails();
 
-            if (sidebar.classList.contains('cart-closed')) {
-                sidebar.classList.remove('cart-closed');
-                sidebar.classList.add('cart-open');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            if (sidebar.classList.contains('sidebar-closed')) {
+                sidebar.classList.remove('sidebar-closed');
+                sidebar.classList.add('sidebar-open');
+                overlay.classList.add('active');
                 document.body.classList.add('no-scroll');
             } else {
-                sidebar.classList.remove('cart-open');
-                sidebar.classList.add('cart-closed');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.add('sidebar-closed');
+                overlay.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             }
         }
@@ -432,7 +434,7 @@
             
             // Открываем корзину, чтобы показать результат
             const sidebar = document.getElementById('cart-sidebar');
-            if (sidebar.classList.contains('cart-closed')) toggleCart();
+            if (sidebar.classList.contains('sidebar-closed')) toggleCart();
         }
 
         function changeQty(index, delta) {
@@ -532,16 +534,14 @@
             // Открываем шторку
             detailsSidebar.classList.remove('sidebar-closed');
             detailsSidebar.classList.add('sidebar-open');
-            detailsOverlay.classList.remove('hidden');
-            setTimeout(() => detailsOverlay.classList.remove('opacity-0'), 10);
+            detailsOverlay.classList.add('active');
             document.body.classList.add('no-scroll');
         }
 
         function closeDetails() {
             detailsSidebar.classList.remove('sidebar-open');
             detailsSidebar.classList.add('sidebar-closed');
-            detailsOverlay.classList.add('opacity-0');
-            setTimeout(() => detailsOverlay.classList.add('hidden'), 300);
+            detailsOverlay.classList.remove('active');
             document.body.classList.remove('no-scroll');
         }
     </script>
