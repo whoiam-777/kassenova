@@ -33,15 +33,13 @@
         .glass { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
         .text-gradient { background: linear-gradient(to right, #d4af37, #b46b57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        #cart-sidebar { transition: transform 0.3s ease-in-out; }
-        .cart-open { transform: translateX(0) !important; }
-        .cart-closed { transform: translateX(100%); }
-
-        /* Стили для модального окна */
-        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
-        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
-        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
-        .modal-content { max-height: 90vh; overflow-y: auto; }
+        /* Стили для шторок (Sidebar) */
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .sidebar-open { transform: translateX(0) !important; }
+        .sidebar-closed { transform: translateX(100%); }
+        
+        /* Блокировка прокрутки фона */
+        body.no-scroll { overflow: hidden; }
     </style>
 </head>
 <body class="font-sans bg-brand-light text-brand-dark overflow-x-hidden selection:bg-brand-gold selection:text-white">
@@ -68,8 +66,8 @@
     <section class="pt-32 pb-8 text-center relative z-10">
         <div class="container mx-auto px-6">
             <span class="text-brand-gold font-bold tracking-[0.2em] text-xs uppercase bg-white px-4 py-1 rounded-full shadow-sm">B2B Partnership</span>
-            <h1 class="font-serif text-4xl font-bold mt-4 mb-2">Оптовый Заказ</h1>
-            <p class="text-gray-500 text-sm max-w-xl mx-auto">Калькулятор автоматически рассчитает сумму.</p>
+            <h1 class="font-serif text-4xl font-bold mt-4 mb-2">Оптовый Прайс</h1>
+            <p class="text-gray-500 text-sm max-w-xl mx-auto">Нажмите "Подробнее", чтобы увидеть характеристики.</p>
         </div>
     </section>
 
@@ -89,7 +87,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">35 000 ₸</span>
                             <button onclick="addToCart('Аэрогриль Premium X1', 35000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
 
                     <div class="hidden product-data">
@@ -115,7 +113,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">12 000 ₸</span>
                             <button onclick="addToCart('Вафельница Grand', 12000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-2.jpg</div>
@@ -139,7 +137,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">22 000 ₸</span>
                             <button onclick="addToCart('Блендер Pro 500', 22000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-3.jpg</div>
@@ -163,7 +161,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">18 500 ₸</span>
                             <button onclick="addToCart('Мультипекарь 3в1', 18500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                      <div class="hidden product-data">
                         <div class="data-img">images/w-4.jpg</div>
@@ -187,7 +185,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">10 500 ₸</span>
                             <button onclick="addToCart('Чайник Smart', 10500)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-5.jpg</div>
@@ -211,7 +209,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">45 000 ₸</span>
                             <button onclick="addToCart('Кофеварка', 45000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-6.jpg</div>
@@ -235,7 +233,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">14 000 ₸</span>
                             <button onclick="addToCart('Тостер Gold', 14000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-7.jpg</div>
@@ -259,7 +257,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">38 000 ₸</span>
                             <button onclick="addToCart('Миксер Planeta', 38000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-8.jpg</div>
@@ -283,7 +281,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">25 000 ₸</span>
                             <button onclick="addToCart('Пылесос Handheld', 25000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                     <div class="hidden product-data">
                         <div class="data-img">images/w-9.jpg</div>
@@ -307,7 +305,7 @@
                             <span class="font-serif font-bold text-sm md:text-lg text-brand-dark product-price-display">16 000 ₸</span>
                             <button onclick="addToCart('Утюг Steam', 16000)" class="text-brand-gold hover:scale-110 transition active:scale-95"><i class="fas fa-plus-circle text-3xl"></i></button>
                         </div>
-                        <button onclick="openProduct(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-brand-dark transition py-1 border border-transparent hover:border-gray-300 rounded-full">Подробнее</button>
+                        <button onclick="openDetails(this)" class="w-full text-center text-[10px] font-bold uppercase tracking-wider text-white bg-brand-gold/80 hover:bg-brand-gold transition py-2 rounded-lg">Подробнее</button>
                     </div>
                      <div class="hidden product-data">
                         <div class="data-img">images/w-10.jpg</div>
@@ -324,37 +322,45 @@
         </div>
     </section>
 
-    <div id="product-modal" class="fixed inset-0 z-[100] flex justify-center items-center p-4 hidden-modal">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProduct()"></div>
-        
-        <div class="relative bg-white rounded-3xl w-full max-w-2xl modal-content shadow-2xl overflow-hidden animate-[blob_0.3s_ease-out]">
-            <button onclick="closeProduct()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-red-100 hover:text-red-500 transition z-10"><i class="fas fa-times"></i></button>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="w-full md:w-1/2 bg-gray-100 min-h-[250px] flex items-center justify-center relative">
-                     <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                
-                <div class="w-full md:w-1/2 p-6 md:p-8">
-                    <h2 id="modal-title" class="font-serif text-2xl font-bold text-brand-dark mb-1">Название</h2>
-                    <div id="modal-price" class="text-2xl font-bold text-brand-gold mb-4">0 ₸</div>
-                    
-                    <div class="space-y-4">
-                        <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed">Описание...</p>
-                        
-                        <div class="bg-brand-light p-3 rounded-xl border border-gray-100">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Характеристики</h4>
-                            <div id="modal-specs" class="text-xs text-gray-600 space-y-1"></div>
-                        </div>
-                    </div>
+    <div id="details-overlay" onclick="closeDetails()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="details-sidebar" class="fixed top-0 right-0 h-full w-[100%] md:w-[500px] bg-white z-[70] shadow-2xl sidebar sidebar-closed flex flex-col">
+        <div class="absolute top-4 right-4 z-10">
+            <button onclick="closeDetails()" class="w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-gray-500 hover:bg-red-100 hover:text-red-500 transition shadow-sm">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
-                    <button id="modal-add-btn" class="mt-6 w-full bg-brand-dark text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 hover:bg-brand-gold transition shadow-lg">
-                        <span>Добавить в заказ</span> <i class="fas fa-plus-circle"></i>
-                    </button>
+        <div class="flex-1 overflow-y-auto">
+            <div class="w-full h-[400px] bg-gray-100 relative">
+                <img id="detail-img" src="" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="p-8">
+                <h2 id="detail-title" class="font-serif text-3xl font-bold text-brand-dark mb-2">Название</h2>
+                <div id="detail-price" class="text-2xl font-bold text-brand-gold mb-6">0 ₸</div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Описание</h4>
+                        <p id="detail-desc" class="text-sm text-gray-600 leading-relaxed">Описание...</p>
+                    </div>
+                    
+                    <div class="bg-brand-light p-5 rounded-xl border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Характеристики</h4>
+                        <div id="detail-specs" class="text-sm text-gray-600 space-y-2"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="p-6 border-t border-gray-100 bg-white">
+            <button id="detail-add-btn" class="w-full bg-brand-dark text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-brand-gold transition shadow-lg">
+                <span>Добавить в корзину</span> <i class="fas fa-plus-circle"></i>
+            </button>
+        </div>
     </div>
+
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300"></div>
     
@@ -393,16 +399,23 @@
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
             const overlay = document.getElementById('cart-overlay');
+            const detailsSidebar = document.getElementById('details-sidebar');
+            
+            // Если открыта шторка товара, закрываем её
+            if (detailsSidebar.classList.contains('sidebar-open')) closeDetails();
+
             if (sidebar.classList.contains('cart-closed')) {
                 sidebar.classList.remove('cart-closed');
                 sidebar.classList.add('cart-open');
                 overlay.classList.remove('hidden');
                 setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                document.body.classList.add('no-scroll');
             } else {
                 sidebar.classList.remove('cart-open');
                 sidebar.classList.add('cart-closed');
                 overlay.classList.add('opacity-0');
                 setTimeout(() => overlay.classList.add('hidden'), 300);
+                document.body.classList.remove('no-scroll');
             }
         }
 
@@ -415,12 +428,11 @@
             }
             saveAndRender();
             
-            // Визуальный эффект открытия корзины
+            closeDetails(); // Закрываем детали
+            
+            // Открываем корзину, чтобы показать результат
             const sidebar = document.getElementById('cart-sidebar');
             if (sidebar.classList.contains('cart-closed')) toggleCart();
-            
-            // Если открыта модалка, закрываем её
-            closeProduct(); 
         }
 
         function changeQty(index, delta) {
@@ -488,18 +500,14 @@
             window.open(`https://wa.me/77058111630?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // --- МОДАЛЬНОЕ ОКНО ---
-        const modal = document.getElementById('product-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalPrice = document.getElementById('modal-price');
-        const modalDesc = document.getElementById('modal-desc');
-        const modalSpecs = document.getElementById('modal-specs');
-        const modalImg = document.getElementById('modal-img');
-        const modalAddBtn = document.getElementById('modal-add-btn');
-
-        function openProduct(btn) {
+        // --- ЛОГИКА ДЕТАЛЬНОЙ ПАНЕЛИ (ШТОРКА) ---
+        const detailsSidebar = document.getElementById('details-sidebar');
+        const detailsOverlay = document.getElementById('details-overlay');
+        
+        function openDetails(btn) {
             const card = btn.closest('.product-card');
             
+            // Собираем данные
             const title = card.querySelector('.product-title').innerText;
             const priceDisplay = card.querySelector('.product-price-display').innerText;
             const priceRaw = parseInt(card.querySelector('.product-price-raw').innerText);
@@ -509,26 +517,32 @@
             const desc = dataDiv.querySelector('.data-desc').innerHTML;
             const specs = dataDiv.querySelector('.data-specs').innerHTML;
             
-            modalTitle.innerText = title;
-            modalPrice.innerText = priceDisplay;
-            modalDesc.innerHTML = desc;
-            modalSpecs.innerHTML = specs;
-            modalImg.src = imgSrc;
+            // Заполняем панель
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = priceDisplay;
+            document.getElementById('detail-img').src = imgSrc;
+            document.getElementById('detail-desc').innerHTML = desc;
+            document.getElementById('detail-specs').innerHTML = specs;
             
-            // Настраиваем кнопку "Добавить" внутри модалки
-            modalAddBtn.onclick = function() {
+            // Кнопка добавления в корзину
+            document.getElementById('detail-add-btn').onclick = function() {
                 addToCart(title, priceRaw);
             };
 
-            modal.classList.remove('hidden-modal');
-            modal.classList.add('visible-modal');
-            document.body.style.overflow = 'hidden';
+            // Открываем шторку
+            detailsSidebar.classList.remove('sidebar-closed');
+            detailsSidebar.classList.add('sidebar-open');
+            detailsOverlay.classList.remove('hidden');
+            setTimeout(() => detailsOverlay.classList.remove('opacity-0'), 10);
+            document.body.classList.add('no-scroll');
         }
 
-        function closeProduct() {
-            modal.classList.remove('visible-modal');
-            modal.classList.add('hidden-modal');
-            document.body.style.overflow = '';
+        function closeDetails() {
+            detailsSidebar.classList.remove('sidebar-open');
+            detailsSidebar.classList.add('sidebar-closed');
+            detailsOverlay.classList.add('opacity-0');
+            setTimeout(() => detailsOverlay.classList.add('hidden'), 300);
+            document.body.classList.remove('no-scroll');
         }
     </script>
 </body>
