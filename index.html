@@ -6,44 +6,20 @@
     <title>Kassenova | Premium Home Appliances</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Manrope"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            gold: '#d4af37',
-                            rose: '#fce7f3',
-                            dark: '#1a1a1a',
-                            light: '#fafafa'
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 10s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Manrope"', 'sans-serif'] },
+                    colors: { brand: { gold: '#d4af37', rose: '#fce7f3', dark: '#1a1a1a', light: '#fafafa' } },
+                    animation: { 'blob': 'blob 10s infinite', 'float': 'float 6s ease-in-out infinite' },
                     keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
+                        blob: { '0%': { transform: 'translate(0px, 0px) scale(1)' }, '33%': { transform: 'translate(30px, -50px) scale(1.1)' }, '66%': { transform: 'translate(-20px, 20px) scale(0.9)' }, '100%': { transform: 'translate(0px, 0px) scale(1)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
                     }
                 }
             }
@@ -51,48 +27,24 @@
     </script>
 
     <style>
-        /* Блокировка горизонтального скролла страницы */
         html, body { overflow-x: hidden; width: 100%; position: relative; }
-
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #fff; }
         ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
         
-        .glass {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
+        .glass { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .text-gradient { background: linear-gradient(to right, #d4af37, #b46b57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .text-gradient {
-            background: linear-gradient(to right, #d4af37, #b46b57);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        #preloader { position: fixed; inset: 0; background: #fff; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
+        .hide-scroll::-webkit-scrollbar { height: 6px; }
+        .hide-scroll::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        .hide-scroll::-webkit-scrollbar-track { background: rgba(212, 175, 55, 0.1); }
 
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: #fff;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-
-        /* Скрытие скроллбара для слайдера, но сохранение функционала */
-        .hide-scroll::-webkit-scrollbar {
-            height: 6px; 
-        }
-        .hide-scroll::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 10px;
-        }
-        .hide-scroll::-webkit-scrollbar-track {
-            background: rgba(212, 175, 55, 0.1);
-        }
+        /* Стили для модального окна */
+        #product-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #product-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #product-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        .modal-content { max-height: 90vh; overflow-y: auto; }
     </style>
 </head>
 <body class="font-sans bg-brand-light text-brand-dark selection:bg-brand-gold selection:text-white w-full max-w-[100vw]">
@@ -113,38 +65,24 @@
     <header class="fixed w-full z-50 glass transition-all duration-300 top-0">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center relative z-50 w-full">
             <a href="#" class="font-serif text-2xl font-bold tracking-widest text-gradient">KASSENOVA</a>
-            
             <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#home" class="hover:text-brand-gold transition">Главная</a>
                 <a href="#products" class="hover:text-brand-gold transition">Каталог</a>
                 <a href="#about" class="hover:text-brand-gold transition">О нас</a>
             </nav>
-
             <div class="flex items-center gap-3 md:gap-4">
-                <a href="wholesale.html" class="hidden md:flex items-center gap-2 border border-brand-gold/30 text-brand-dark px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-gold hover:text-white transition">
-                    <i class="fas fa-briefcase"></i> Для оптовиков
-                </a>
-                <a href="wholesale.html" class="md:hidden flex items-center justify-center w-10 h-10 border border-brand-gold/30 rounded-full text-brand-gold hover:bg-brand-gold hover:text-white transition active:scale-95">
-                    <i class="fas fa-briefcase text-sm"></i>
-                </a>
-
-                <a href="https://wa.me/77058111630" class="hidden md:flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-brand-gold transition shadow-lg hover:shadow-brand-gold/50">
-                    <i class="fab fa-whatsapp text-lg"></i> Связаться
-                </a>
-                
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-dark focus:outline-none transition-transform duration-300">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="wholesale.html" class="hidden md:flex items-center gap-2 border border-brand-gold/30 text-brand-dark px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand-gold hover:text-white transition"><i class="fas fa-briefcase"></i> Для оптовиков</a>
+                <a href="wholesale.html" class="md:hidden flex items-center justify-center w-10 h-10 border border-brand-gold/30 rounded-full text-brand-gold hover:bg-brand-gold hover:text-white transition active:scale-95"><i class="fas fa-briefcase text-sm"></i></a>
+                <a href="https://wa.me/77058111630" class="hidden md:flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-brand-gold transition shadow-lg hover:shadow-brand-gold/50"><i class="fab fa-whatsapp text-lg"></i> Связаться</a>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-dark focus:outline-none transition-transform duration-300"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-2xl transform -translate-y-[200%] transition-transform duration-500 ease-in-out -z-10 flex flex-col items-center py-10 gap-8 opacity-0 pointer-events-none">
             <a href="#home" class="mobile-link text-xl font-serif font-bold text-brand-dark hover:text-brand-gold transition">Главная</a>
             <a href="#products" class="mobile-link text-xl font-serif font-bold text-brand-dark hover:text-brand-gold transition">Каталог</a>
             <a href="#about" class="mobile-link text-xl font-serif font-bold text-brand-dark hover:text-brand-gold transition">О нас</a>
             <a href="#contacts" class="mobile-link text-xl font-serif font-bold text-brand-dark hover:text-brand-gold transition">Контакты</a>
             <a href="wholesale.html" class="mobile-link text-xl font-serif font-bold text-brand-gold hover:text-brand-dark transition"><i class="fas fa-briefcase text-sm"></i> Для Оптовиков</a>
-            <a href="https://wa.me/77058111630" class="bg-brand-gold text-white px-8 py-3 rounded-full font-bold shadow-lg">Написать в WhatsApp</a>
         </div>
     </header>
 
@@ -159,7 +97,6 @@
                     <a href="https://t.me/aselya123450" target="_blank" class="px-8 py-4 glass text-brand-dark border border-brand-dark/5 rounded-xl font-bold hover:bg-white transition text-center flex items-center justify-center gap-2"><i class="fab fa-telegram text-[#0088cc]"></i> Telegram</a>
                 </div>
             </div>
-            
             <div class="relative hidden md:flex justify-center" data-aos="fade-left">
                 <div class="relative w-[400px] h-[500px] border border-white/50 rounded-[40px] p-2 glass animate-float shadow-2xl">
                     <div class="w-full h-full bg-gradient-to-br from-gray-50 to-white rounded-[32px] overflow-hidden flex flex-col items-center justify-center relative">
@@ -199,101 +136,180 @@
             <div class="hide-scroll overflow-x-auto pb-8 -mx-6 px-6 md:mx-0 md:px-0" data-aos="fade-up">
                 <div class="grid grid-rows-2 grid-flow-col gap-6 w-max">
                     
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Аэрогриля</p></div>
                             <div class="absolute top-3 left-3 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded">HIT</div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Royal AirFryer</h3>
-                        <p class="text-xs text-gray-500 mb-3 line-clamp-2">Готовка без масла, сенсорный экран и чаша 5 литров.</p>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Royal AirFryer</h3>
+                        <p class="text-xs text-gray-500 mb-3 line-clamp-2">Готовка без масла, сенсорный экран и чаша 5 литров. Идеально для ПП.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">35 990 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">35 990 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                        
+                        <div class="hidden product-data">
+                            <div class="data-img">images/airfryer-full.jpg</div> <div class="data-desc">
+                                Мощный аэрогриль для приготовления здоровой пищи без масла. Технология циркуляции горячего воздуха позволяет жарить, запекать и разогревать блюда, сохраняя их сочность.
+                            </div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Черный глянец / Золото</p>
+                                <p><strong>Мощность:</strong> 1500 Вт</p>
+                                <p><strong>Объем чаши:</strong> 5 литров</p>
+                                <p><strong>Вес без упаковки:</strong> 4.2 кг</p>
+                                <p><strong>Вес с упаковкой:</strong> 5.1 кг</p>
+                                <p><strong>Размеры (ШхВхГ):</strong> 28 x 32 x 30 см</p>
+                                <p><strong>Размеры коробки:</strong> 35 x 38 x 35 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Вафельницы</p></div>
                             <div class="absolute top-3 left-3 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded">NEW</div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Grand Waffle</h3>
-                        <p class="text-xs text-gray-500 mb-3 line-clamp-2">Венские вафли за 3 минуты. Сменные панели.</p>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Grand Waffle</h3>
+                        <p class="text-xs text-gray-500 mb-3 line-clamp-2">Венские вафли за 3 минуты. Сменные панели для гриля и сэндвичей.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">18 990 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">18 990 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+
+                         <div class="hidden product-data">
+                            <div class="data-img">images/waffle-full.jpg</div>
+                            <div class="data-desc">
+                                Универсальная вафельница со сменными панелями. Готовьте венские вафли, горячие бутерброды или овощи гриль. Антипригарное покрытие легко моется.
+                            </div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Серебристый</p>
+                                <p><strong>Мощность:</strong> 1000 Вт</p>
+                                <p><strong>Сменные панели:</strong> 3 комплекта</p>
+                                <p><strong>Вес без упаковки:</strong> 2.1 кг</p>
+                                <p><strong>Вес с упаковкой:</strong> 2.8 кг</p>
+                                <p><strong>Размеры (ШхВхГ):</strong> 24 x 10 x 24 см</p>
+                                <p><strong>Размеры коробки:</strong> 28 x 15 x 28 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Блендера</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Pro Blender 500</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Pro Blender 500</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">Мощный мотор, колет лед, стеклянная чаша.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">25 000 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">25 000 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                        <div class="hidden product-data">
+                            <div class="data-desc">Профессиональный блендер для смузи, коктейлей и супов-пюре.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Стальной</p>
+                                <p><strong>Вес:</strong> 3.5 кг</p>
+                                <p><strong>Размеры:</strong> 20x20x40 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Тостера</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Golden Toaster</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Golden Toaster</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">7 степеней прожарки, функция разморозки.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">15 500 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">15 500 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                         <div class="hidden product-data">
+                            <div class="data-desc">Стильный тостер с широкими слотами для любого хлеба.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Золото</p>
+                                <p><strong>Вес:</strong> 1.5 кг</p>
+                                <p><strong>Размеры:</strong> 25x15x18 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Кофемашины</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Barista Express</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Barista Express</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">Капучино одной кнопкой. Давление 15 бар.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">85 000 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">85 000 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                        <div class="hidden product-data">
+                            <div class="data-desc">Рожковая кофеварка с автоматическим капучинатором.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Металлик</p>
+                                <p><strong>Вес:</strong> 4.8 кг</p>
+                                <p><strong>Размеры:</strong> 30x25x35 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Миксера</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Planetary Mixer</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Planetary Mixer</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">Планетарное вращение, 3 насадки в комплекте.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">42 000 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">42 000 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                        <div class="hidden product-data">
+                            <div class="data-desc">Планетарный миксер для идеального теста и кремов.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Красный</p>
+                                <p><strong>Вес:</strong> 5.5 кг</p>
+                                <p><strong>Размеры:</strong> 35x20x35 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Мультипекаря</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">MultiBaker 5in1</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">MultiBaker 5in1</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">Гриль, сэндвичи, орешки - всё в одном.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">21 000 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">21 000 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                        <div class="hidden product-data">
+                            <div class="data-desc">Мультипекарь с 5 сменными панелями для разнообразной выпечки.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Белый</p>
+                                <p><strong>Вес:</strong> 2.0 кг</p>
+                                <p><strong>Размеры:</strong> 23x23x10 см</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group">
+                    <div class="w-[280px] md:w-[320px] glass rounded-2xl p-5 border border-white hover:shadow-xl transition group relative product-card">
                         <div class="h-48 bg-gray-100 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center">
                             <div class="text-center text-gray-400"><i class="fas fa-camera text-3xl mb-2"></i><p class="text-[10px] uppercase">Фото Чайника</p></div>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mb-1">Smart Kettle LED</h3>
+                        <h3 class="font-serif text-xl font-bold mb-1 product-title">Smart Kettle LED</h3>
                         <p class="text-xs text-gray-500 mb-3 line-clamp-2">Поддержание температуры, управление со смартфона.</p>
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-brand-dark">12 900 ₸</span>
-                            <a href="https://wa.me/77058111630" class="text-brand-gold hover:scale-110 transition"><i class="fas fa-plus-circle text-2xl"></i></a>
+                            <span class="font-bold text-brand-dark product-price">12 900 ₸</span>
+                            <button onclick="openProduct(this)" class="text-xs font-bold uppercase tracking-wider text-brand-gold border border-brand-gold px-3 py-1 rounded-full hover:bg-brand-gold hover:text-white transition">Подробнее</button>
+                        </div>
+                         <div class="hidden product-data">
+                            <div class="data-desc">Умный чайник с подсветкой и функцией поддержания тепла.</div>
+                            <div class="data-specs">
+                                <p><strong>Цвет:</strong> Стекло/Сталь</p>
+                                <p><strong>Вес:</strong> 1.2 кг</p>
+                                <p><strong>Размеры:</strong> 22x15x24 см</p>
+                            </div>
                         </div>
                     </div>
 
@@ -305,6 +321,43 @@
             </div>
         </div>
     </section>
+
+    <div id="product-modal" class="fixed inset-0 z-[100] flex justify-center items-center p-4 hidden-modal">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProduct()"></div>
+        
+        <div class="relative bg-white rounded-3xl w-full max-w-2xl modal-content shadow-2xl overflow-hidden animate-[blob_0.3s_ease-out]">
+            <button onclick="closeProduct()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-red-100 hover:text-red-500 transition z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="w-full md:w-1/2 bg-gray-100 min-h-[250px] flex items-center justify-center relative">
+                     <div class="text-center text-gray-400" id="modal-img-placeholder"><i class="fas fa-camera text-4xl mb-2"></i><p class="text-xs uppercase">Фото товара</p></div>
+                     <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover hidden">
+                </div>
+                
+                <div class="w-full md:w-1/2 p-6 md:p-8">
+                    <h2 id="modal-title" class="font-serif text-3xl font-bold text-brand-dark mb-2">Название товара</h2>
+                    <div id="modal-price" class="text-2xl font-bold text-brand-gold mb-6">0 ₸</div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Описание</h4>
+                            <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed">Описание товара...</p>
+                        </div>
+                        
+                        <div class="bg-brand-light p-4 rounded-xl border border-gray-100">
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Характеристики</h4>
+                            <div id="modal-specs" class="text-xs text-gray-600 space-y-2">
+                                </div>
+                        </div>
+                    </div>
+
+                    <a id="modal-btn" href="#" class="mt-8 w-full bg-brand-dark text-white py-4 rounded-xl font-bold text-center block hover:bg-brand-gold transition shadow-lg flex items-center justify-center gap-2">
+                        <span>Заказать в WhatsApp</span> <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section id="about" class="py-24 relative overflow-hidden w-full">
         <div class="absolute inset-0 bg-brand-dark"></div>
@@ -337,12 +390,61 @@
         AOS.init({ once: true, offset: 50, duration: 1000 });
         window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500); }, 800); });
         
+        // Меню
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = menuBtn.querySelector('i');
         let isMenuOpen = false;
         menuBtn.addEventListener('click', () => { isMenuOpen = !isMenuOpen; mobileMenu.classList.toggle('-translate-y-[200%]'); mobileMenu.classList.toggle('opacity-0'); mobileMenu.classList.toggle('pointer-events-none'); menuIcon.classList.toggle('fa-bars'); menuIcon.classList.toggle('fa-times'); });
         document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { isMenuOpen = false; mobileMenu.classList.add('-translate-y-[200%]', 'opacity-0', 'pointer-events-none'); menuIcon.classList.remove('fa-times'); menuIcon.classList.add('fa-bars'); }));
+
+        // МОДАЛЬНОЕ ОКНО - ЛОГИКА
+        const modal = document.getElementById('product-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalSpecs = document.getElementById('modal-specs');
+        const modalImg = document.getElementById('modal-img');
+        const modalImgPlace = document.getElementById('modal-img-placeholder');
+        const modalBtn = document.getElementById('modal-btn');
+
+        function openProduct(btn) {
+            // Находим карточку товара
+            const card = btn.closest('.product-card');
+            
+            // Берем данные
+            const title = card.querySelector('.product-title').innerText;
+            const price = card.querySelector('.product-price').innerText;
+            
+            // Скрытые данные
+            const dataDiv = card.querySelector('.product-data');
+            const desc = dataDiv.querySelector('.data-desc').innerHTML;
+            const specs = dataDiv.querySelector('.data-specs').innerHTML;
+            
+            // Пробуем найти фото (если есть data-img, иначе ищем обычное)
+            // Здесь для примера используем заглушку, так как у тебя еще нет фото
+            // Если добавишь фото в data-img, раскомментируй логику ниже
+            
+            // Заполняем модалку
+            modalTitle.innerText = title;
+            modalPrice.innerText = price;
+            modalDesc.innerHTML = desc;
+            modalSpecs.innerHTML = specs;
+            
+            // Ссылка на WhatsApp с предзаполненным текстом
+            modalBtn.href = `https://wa.me/77058111630?text=Здравствуйте! Хочу заказать ${title} за ${price}`;
+
+            // Показываем окно
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden'; // Блокируем скролл сайта
+        }
+
+        function closeProduct() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = ''; // Возвращаем скролл
+        }
     </script>
 </body>
 </html>
